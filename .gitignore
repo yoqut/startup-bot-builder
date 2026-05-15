@@ -1,0 +1,9 @@
+.venv/
+.env
+.claude/
+node_modules/
+dist/
+build/
+*.log
+*.tmp
+*.bak
