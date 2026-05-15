@@ -7,3 +7,8 @@ build/
 *.log
 *.tmp
 *.bak
+*.pyc
+__pycache__/
+.DS_Store
+.idea/
+.vscode/
