@@ -1,0 +1,24 @@
+time="2026-05-15T14:19:21+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container docker-redis-1  Created
+ Container docker-db-1  Created
+ Container docker-db-1  Starting
+ Container docker-redis-1  Starting
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint docker-redis-1 (bc6b686f1e9136fd513cf67e506192f40f09191903c16c43a0aea6d6b3c3a119): Bind for 0.0.0.0:6379 failed: port is already allocated
+time="2026-05-15T14:20:04+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container docker-redis-1  Created
+ Container docker-db-1  Created
+ Container docker-redis-1  Starting
+ Container docker-db-1  Starting
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint docker-redis-1 (b2709093e50cd1cff8bc0a7fa73c367fc30f06d8e8913b3ffd80ee38e6fd4a45): Bind for 0.0.0.0:6379 failed: port is already allocated
+time="2026-05-15T14:20:41+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container docker-redis-1  Created
+ Container docker-db-1  Created
+ Container docker-redis-1  Starting
+ Container docker-db-1  Starting
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint docker-redis-1 (81733c4fda7ca69465b31aa07ec7cd7b4b0d23795bd60517bfe9c8de4d244f4d): Bind for 0.0.0.0:6379 failed: port is already allocated
+time="2026-05-15T14:21:31+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+unable to get image 'postgres:16-alpine': Cannot connect to the Docker daemon at unix:///Users/muhammadali/.docker/run/docker.sock. Is the docker daemon running?
+time="2026-05-15T14:21:36+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+unable to get image 'redis:7-alpine': Cannot connect to the Docker daemon at unix:///Users/muhammadali/.docker/run/docker.sock. Is the docker daemon running?
+time="2026-05-15T14:22:13+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+unable to get image 'redis:7-alpine': Cannot connect to the Docker daemon at unix:///Users/muhammadali/.docker/run/docker.sock. Is the docker daemon running?

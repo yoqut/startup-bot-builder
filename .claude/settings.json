@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(PGPASSWORD=secret psql -h localhost -U botbuilder -d botbuilder -c \"SELECT id, name, is_active FROM bots;\")",
+      "Bash(PGPASSWORD=secret psql -h localhost -U botbuilder -d botbuilder -c \"SELECT b.id, b.name, u.email FROM bots b JOIN users u ON b.user_id = u.id;\")",
+      "Bash(python3 -c \"import alembic\")",
+      "Bash(python3 -m alembic current)",
+      "Bash(python3 -m alembic history --verbose)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

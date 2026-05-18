@@ -1,0 +1,158 @@
+{
+  "nav": {
+    "dashboard": "Bosh sahifa",
+    "bots": "Botlar",
+    "templates": "Shablonlar",
+    "analytics": "Statistika",
+    "settings": "Sozlamalar",
+    "broadcast": "Broadcast",
+    "conversations": "Suhbatlar",
+    "business": "Business"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "section_stats": "Statistika",
+    "section_recent": "Oxirgi botlar",
+    "section_quick": "Tezkor amallar",
+    "see_all": "Barchasi",
+    "stats": {
+      "total_users": "Jami foydalanuvchilar",
+      "active_users": "Faol (7 kun)",
+      "active_bots": "Faol botlar",
+      "messages_today": "Jami xabarlar"
+    },
+    "quick": {
+      "create_bot": "Bot qo'shish",
+      "create_bot_desc": "Yangi Telegram bot yarating",
+      "conversations": "Suhbatlar",
+      "conversations_desc": "Foydalanuvchilar bilan chat",
+      "broadcast": "Broadcast",
+      "broadcast_desc": "Foydalanuvchilarga xabar yuborish"
+    }
+  },
+  "bots": {
+    "title": "Mening Botlarim",
+    "add": "Bot qo'shish",
+    "add_short": "Qo'shish",
+    "search": "Bot qidirish…",
+    "filter": {
+      "all": "Barchasi",
+      "active": "Faol",
+      "draft": "Draft"
+    },
+    "empty": "Bot topilmadi",
+    "empty_desc": "Qidiruvni o'zgartiring yoki filterni olib tashlang",
+    "no_bots": "Hali bot yaratilmagan",
+    "no_bots_desc": "Birinchi botingizni yarating",
+    "count": "{{count}} ta bot",
+    "modal_title": "Yangi Bot qo'shish",
+    "tab_auto": "Avtomatik",
+    "tab_manual": "Token bilan",
+    "actions": {
+      "flow": "Flow",
+      "analytics": "Stats",
+      "duplicate": "Nusxa",
+      "delete": "O'chirish",
+      "settings": "Sozlamalar",
+      "stop": "To'xtatish",
+      "start": "Yoqish",
+      "chat": "Chat"
+    },
+    "confirm": {
+      "delete": "\"{{name}}\" botini o'chirish",
+      "delete_desc": "Bu amalni qaytarib bo'lmaydi. Bot va uning barcha flowlari o'chiriladi.",
+      "delete_label": "O'chirish"
+    },
+    "toast": {
+      "created": "Bot muvaffaqiyatli qo'shildi!",
+      "deleted": "\"{{name}}\" o'chirildi",
+      "duplicated": "\"{{name}}\" nusxasi yaratildi",
+      "toggle_error": "Status o'zgartirishda xatolik",
+      "duplicate_error": "Nusxa yaratishda xatolik",
+      "delete_error": "O'chirishda xatolik yuz berdi"
+    },
+    "status": {
+      "active": "● Faol",
+      "draft": "○ Draft"
+    },
+    "users": "foydalanuvchi",
+    "active_short": "faol (7d)",
+    "messages": "xabar"
+  },
+  "builder": {
+    "save": "Saqlash",
+    "publish": "Nashr etish",
+    "saved": "Saqlandi",
+    "empty": "Bo'sh canvas"
+  },
+  "onboarding": {
+    "step1": {
+      "title": "Shablonni tanlang",
+      "desc": "Tayyor shablondan boshlang yoki noldan o'zingiz yarating."
+    },
+    "step2": {
+      "title": "Telegram botni ulang",
+      "desc": "@BotFather dan token oling va pastga kiriting."
+    },
+    "step3": {
+      "title": "Tabriklaymiz! 🎉",
+      "desc": "{{name}} muvaffaqiyatli ulandi. Endi flow builder yordamida botingizni sozlashingiz mumkin."
+    },
+    "next": "Davom etish",
+    "back": "Orqaga",
+    "finish": "Dashboard ga o'tish",
+    "skip": "O'tkazib yuborish",
+    "adding": "Qo'shilmoqda…",
+    "add_bot": "Botni qo'shish",
+    "progress": "{{step}} / {{total}} qadam",
+    "step_label_0": "Shablon",
+    "step_label_1": "Token",
+    "step_label_2": "Tayyor!",
+    "from_scratch": "Noldan boshlash",
+    "from_scratch_desc": "Bo'sh canvas — to'liq erkinlik",
+    "card": {
+      "title": "Birinchi botingizni yarating",
+      "desc": "No-code visual editor bilan Telegram bot yaratish — 3 qadam, 5 daqiqa.",
+      "step1": "@BotFather dan token oling",
+      "step2": "Visual editor bilan flow tuzing",
+      "step3": "Nashr eting — bot ishga tushadi",
+      "cta": "Bot yaratishni boshlash"
+    },
+    "token_check": "Tokenni tekshirish",
+    "token_checking": "Tekshirilmoqda…",
+    "token_verified": "Token tasdiqlandi! Bot tayyor.",
+    "token_warning": "Tokenni avval tekshiring",
+    "bot_added": "Bot qo'shildi!",
+    "bot_add_error": "Bot qo'shishda xatolik",
+    "next_steps": "Keyingi qadamlar",
+    "next_step1": "Flow Builder bilan botingiz ssenariyini tuzing",
+    "next_step2": "\"Nashr\" tugmasini bosing — bot ishga tushadi",
+    "next_step3": "Analytics sahifasida statistikani kuzating"
+  },
+  "templates": {
+    "title": "Shablonlar",
+    "free": "Bepul",
+    "buy": "Sotib olish",
+    "preview": "Ko'rish",
+    "use": "Ishlatish"
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "logout": "Chiqish",
+    "email": "Email",
+    "password": "Parol"
+  },
+  "common": {
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik",
+    "success": "Muvaffaqiyat",
+    "confirm": "Tasdiqlash",
+    "back": "Orqaga",
+    "next": "Keyingisi"
+  }
+}

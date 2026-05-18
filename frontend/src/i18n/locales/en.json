@@ -1,0 +1,199 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "bots": "Bots",
+    "templates": "Templates",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "broadcast": "Broadcast",
+    "conversations": "Conversations",
+    "business": "Business"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "section_stats": "Statistics",
+    "section_recent": "Recent Bots",
+    "section_quick": "Quick Actions",
+    "see_all": "See all",
+    "stats": {
+      "total_users": "Total Users",
+      "active_users": "Active (7 days)",
+      "active_bots": "Active Bots",
+      "messages_today": "Total Messages"
+    },
+    "quick": {
+      "create_bot": "Add Bot",
+      "create_bot_desc": "Create a new Telegram bot",
+      "conversations": "Conversations",
+      "conversations_desc": "Chat with your users",
+      "broadcast": "Broadcast",
+      "broadcast_desc": "Send messages to users"
+    }
+  },
+  "bots": {
+    "title": "My Bots",
+    "add": "Add Bot",
+    "add_short": "Add",
+    "search": "Search bots…",
+    "filter": { "all": "All", "active": "Active", "draft": "Draft" },
+    "empty": "No bots found",
+    "empty_desc": "Try adjusting your search or removing the filter",
+    "no_bots": "No bots yet",
+    "no_bots_desc": "Create your first bot to get started",
+    "count": "{{count}} bot",
+    "modal_title": "Add New Bot",
+    "tab_auto": "Automatic",
+    "tab_manual": "With Token",
+    "actions": {
+      "flow": "Flow", "analytics": "Stats", "duplicate": "Duplicate",
+      "delete": "Delete", "settings": "Settings", "stop": "Stop",
+      "start": "Start", "chat": "Chat"
+    },
+    "confirm": {
+      "delete": "Delete bot \"{{name}}\"",
+      "delete_desc": "This action cannot be undone. The bot and all its flows will be permanently deleted.",
+      "delete_label": "Delete"
+    },
+    "toast": {
+      "created": "Bot added successfully!",
+      "deleted": "\"{{name}}\" deleted",
+      "duplicated": "\"{{name}}\" duplicated",
+      "toggle_error": "Failed to change status",
+      "duplicate_error": "Failed to duplicate bot",
+      "delete_error": "Failed to delete bot"
+    },
+    "status": { "active": "● Active", "draft": "○ Draft" },
+    "users": "users",
+    "active_short": "active (7d)",
+    "messages": "messages"
+  },
+  "builder": {
+    "save": "Save",
+    "publish": "Publish",
+    "saved": "Saved",
+    "empty": "Empty canvas"
+  },
+  "onboarding": {
+    "step1": { "title": "Choose a template", "desc": "Start with a ready-made template or build from scratch." },
+    "step2": { "title": "Connect your Telegram bot", "desc": "Get a token from @BotFather and enter it below." },
+    "step3": { "title": "Congratulations! 🎉", "desc": "{{name}} was connected successfully. You can now configure your bot in the flow builder." },
+    "next": "Continue",
+    "back": "Back",
+    "finish": "Go to Dashboard",
+    "skip": "Skip",
+    "adding": "Adding…",
+    "add_bot": "Add Bot",
+    "progress": "{{step}} / {{total}} steps",
+    "step_label_0": "Template",
+    "step_label_1": "Token",
+    "step_label_2": "Done!",
+    "from_scratch": "Start from scratch",
+    "from_scratch_desc": "Blank canvas — full freedom",
+    "card": {
+      "title": "Create your first bot",
+      "desc": "Build a Telegram bot without code — 3 steps, 5 minutes.",
+      "step1": "Get a token from @BotFather",
+      "step2": "Build your flow in the visual editor",
+      "step3": "Publish — your bot goes live",
+      "cta": "Start building your bot"
+    },
+    "token_check": "Verify token",
+    "token_checking": "Verifying…",
+    "token_verified": "Token verified! Bot is ready.",
+    "token_warning": "Please verify the token first",
+    "bot_added": "Bot added!",
+    "bot_add_error": "Failed to add bot",
+    "next_steps": "Next steps",
+    "next_step1": "Build your bot's scenario in Flow Builder",
+    "next_step2": "Click \"Publish\" — your bot goes live",
+    "next_step3": "Monitor stats in the Analytics section"
+  },
+  "templates": {
+    "title": "Templates",
+    "subtitle": "Build bots with ready-made templates or sell your own",
+    "free": "Free",
+    "buy": "Buy",
+    "preview": "Preview",
+    "use": "Use",
+    "search": "Search templates…",
+    "all": "All",
+    "featured": "Featured",
+    "tab_marketplace": "Marketplace",
+    "tab_my": "My Templates",
+    "tab_purchased": "Purchased",
+    "create": "Create Template",
+    "empty": "No templates found",
+    "empty_desc": "Try a different search or category",
+    "empty_marketplace": "No templates published yet",
+    "already_owned": "Already added",
+    "link_telegram": "Connect your Telegram account first",
+    "used_count": "{{count}}x used",
+    "nodes_count": "{{count}} nodes",
+    "complexity": {
+      "simple": "Simple",
+      "medium": "Medium",
+      "advanced": "Advanced"
+    },
+    "detail": {
+      "flow_preview": "View Flow",
+      "close": "Close",
+      "reviews": "Reviews",
+      "no_reviews": "No reviews yet",
+      "write_review": "Write a review",
+      "your_rating": "Your rating",
+      "review_placeholder": "Your thoughts on this template…",
+      "submit_review": "Submit",
+      "review_submitted": "Review submitted!",
+      "review_only_owners": "Only buyers can leave a review",
+      "select_bot": "Select a bot",
+      "select_bot_desc": "Which bot should this template be applied to?",
+      "apply": "Apply",
+      "applying": "Applying…",
+      "applied": "Flow created! Opening builder…",
+      "no_bots": "Add a bot first",
+      "no_bots_desc": "You need a bot to use this template",
+      "node_count": "{{count}} nodes",
+      "downloads": "{{count}} downloads",
+      "rating": "Rating"
+    },
+    "my": {
+      "title": "My Templates",
+      "empty": "You haven't created any templates yet",
+      "empty_desc": "Export a flow from your bot and publish it to the marketplace",
+      "create": "Create Template",
+      "published": "Published",
+      "hidden": "Hidden",
+      "publish": "Publish",
+      "unpublish": "Unpublish"
+    },
+    "purchased": {
+      "title": "Purchased",
+      "empty": "No purchased templates",
+      "empty_desc": "Browse the marketplace to buy templates"
+    },
+    "preview_flow": {
+      "title": "Flow Preview",
+      "readonly": "Read-only mode",
+      "use_cta": "Use this template"
+    }
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Sign Up",
+    "logout": "Sign Out",
+    "email": "Email",
+    "password": "Password"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next"
+  }
+}

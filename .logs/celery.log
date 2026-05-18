@@ -1,0 +1,43 @@
+ 
+ -------------- celery@Muhammadalis-MacBook-Pro.local v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- macOS-26.3-x86_64-i386-64bit-Mach-O 2026-05-16 14:04:03
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         botbuilder:0x104836660
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 16 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . app.queue.tasks.send_broadcast
+
+[2026-05-16 14:04:04,409: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-05-16 14:04:04,430: INFO/MainProcess] mingle: searching for neighbors
+[2026-05-16 14:04:05,441: INFO/MainProcess] mingle: all alone
+[2026-05-16 14:04:05,493: INFO/MainProcess] celery@Muhammadalis-MacBook-Pro.local ready.
+
+SIGHUP not supported: Restarting with SIGHUP is unstable on this platform!
+
+SIGHUP not supported: Restarting with SIGHUP is unstable on this platform!
+[2026-05-16 15:54:20,170: ERROR/MainProcess] Process 'ForkPoolWorker-16' pid:5928 exited with 'exitcode 70'
+[2026-05-16 15:54:20,218: ERROR/MainProcess] Process 'ForkPoolWorker-15' pid:5927 exited with 'exitcode 70'
+[2026-05-16 15:54:20,229: ERROR/MainProcess] Process 'ForkPoolWorker-14' pid:5926 exited with 'exitcode 70'
+[2026-05-16 15:54:20,240: ERROR/MainProcess] Process 'ForkPoolWorker-13' pid:5925 exited with 'exitcode 70'
+[2026-05-16 15:54:20,253: ERROR/MainProcess] Process 'ForkPoolWorker-12' pid:5924 exited with 'exitcode 70'
+[2026-05-16 15:54:20,265: ERROR/MainProcess] Process 'ForkPoolWorker-11' pid:5923 exited with 'exitcode 70'
+[2026-05-16 15:54:20,275: ERROR/MainProcess] Process 'ForkPoolWorker-10' pid:5922 exited with 'exitcode 70'
+[2026-05-16 15:54:20,286: ERROR/MainProcess] Process 'ForkPoolWorker-9' pid:5921 exited with 'exitcode 70'
+[2026-05-16 15:54:20,297: ERROR/MainProcess] Process 'ForkPoolWorker-8' pid:5920 exited with 'exitcode 70'
+[2026-05-16 15:54:20,309: ERROR/MainProcess] Process 'ForkPoolWorker-7' pid:5919 exited with 'exitcode 70'
+[2026-05-16 15:54:20,320: ERROR/MainProcess] Process 'ForkPoolWorker-6' pid:5918 exited with 'exitcode 70'
+[2026-05-16 15:54:20,331: ERROR/MainProcess] Process 'ForkPoolWorker-5' pid:5917 exited with 'exitcode 70'
+[2026-05-16 15:54:20,342: ERROR/MainProcess] Process 'ForkPoolWorker-4' pid:5908 exited with 'exitcode 70'
+[2026-05-16 15:54:20,352: ERROR/MainProcess] Process 'ForkPoolWorker-3' pid:5907 exited with 'exitcode 70'
+[2026-05-16 15:54:20,363: ERROR/MainProcess] Process 'ForkPoolWorker-2' pid:5906 exited with 'exitcode 70'
+[2026-05-16 15:54:20,374: ERROR/MainProcess] Process 'ForkPoolWorker-1' pid:5905 exited with 'exitcode 70'

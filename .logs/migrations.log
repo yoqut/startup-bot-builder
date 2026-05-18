@@ -1,0 +1,246 @@
+Traceback (most recent call last):
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1047, in main
+    CommandLine(prog=prog).main(argv=argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1037, in main
+    self.run_cmd(cfg, options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 971, in run_cmd
+    fn(
+    ~~^
+        config,
+        ^^^^^^^
+        *[getattr(options, k, None) for k in positional],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{k: getattr(options, k, None) for k in kwarg},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/script/base.py", line 545, in run_env
+    util.load_python_file(self.dir, "env.py")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 762, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/db/migrations/env.py", line 9, in <module>
+    import app.models  # noqa: F401 — all models must be imported
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/__init__.py", line 2, in <module>
+    from app.models.bot import Bot
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/bot.py", line 8, in <module>
+    from app.models.flow import Flow
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/flow.py", line 9, in <module>
+    from app.models.bot import Bot
+ImportError: cannot import name 'Bot' from partially initialized module 'app.models.bot' (most likely due to a circular import) (/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/bot.py)
+Traceback (most recent call last):
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1047, in main
+    CommandLine(prog=prog).main(argv=argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1037, in main
+    self.run_cmd(cfg, options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 971, in run_cmd
+    fn(
+    ~~^
+        config,
+        ^^^^^^^
+        *[getattr(options, k, None) for k in positional],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{k: getattr(options, k, None) for k in kwarg},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/script/base.py", line 545, in run_env
+    util.load_python_file(self.dir, "env.py")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 762, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/db/migrations/env.py", line 9, in <module>
+    import app.models  # noqa: F401 — all models must be imported
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/__init__.py", line 2, in <module>
+    from app.models.bot import Bot
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/bot.py", line 8, in <module>
+    from app.models.flow import Flow
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/flow.py", line 9, in <module>
+    from app.models.bot import Bot
+ImportError: cannot import name 'Bot' from partially initialized module 'app.models.bot' (most likely due to a circular import) (/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/bot.py)
+Traceback (most recent call last):
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1047, in main
+    CommandLine(prog=prog).main(argv=argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1037, in main
+    self.run_cmd(cfg, options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 971, in run_cmd
+    fn(
+    ~~^
+        config,
+        ^^^^^^^
+        *[getattr(options, k, None) for k in positional],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{k: getattr(options, k, None) for k in kwarg},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/script/base.py", line 545, in run_env
+    util.load_python_file(self.dir, "env.py")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 762, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/db/migrations/env.py", line 9, in <module>
+    import app.models  # noqa: F401 — all models must be imported
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/__init__.py", line 10, in <module>
+    from app.models.subscription import Plan
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py", line 5, in <module>
+    from app.models.user import User
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/user.py", line 7, in <module>
+    from app.models.subscription import Plan
+ImportError: cannot import name 'Plan' from partially initialized module 'app.models.subscription' (most likely due to a circular import) (/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py)
+Traceback (most recent call last):
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1047, in main
+    CommandLine(prog=prog).main(argv=argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1037, in main
+    self.run_cmd(cfg, options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 971, in run_cmd
+    fn(
+    ~~^
+        config,
+        ^^^^^^^
+        *[getattr(options, k, None) for k in positional],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{k: getattr(options, k, None) for k in kwarg},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/script/base.py", line 545, in run_env
+    util.load_python_file(self.dir, "env.py")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 762, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/db/migrations/env.py", line 9, in <module>
+    import app.models  # noqa: F401 — all models must be imported
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/__init__.py", line 10, in <module>
+    from app.models.subscription import Plan
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py", line 5, in <module>
+    from app.models.user import User
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/user.py", line 7, in <module>
+    from app.models.subscription import Plan
+ImportError: cannot import name 'Plan' from partially initialized module 'app.models.subscription' (most likely due to a circular import) (/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py)
+Traceback (most recent call last):
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1047, in main
+    CommandLine(prog=prog).main(argv=argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 1037, in main
+    self.run_cmd(cfg, options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/config.py", line 971, in run_cmd
+    fn(
+    ~~^
+        config,
+        ^^^^^^^
+        *[getattr(options, k, None) for k in positional],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{k: getattr(options, k, None) for k in kwarg},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/command.py", line 483, in upgrade
+    script.run_env()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/script/base.py", line 545, in run_env
+    util.load_python_file(self.dir, "env.py")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/.venv/lib/python3.14/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 762, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/db/migrations/env.py", line 9, in <module>
+    import app.models  # noqa: F401 — all models must be imported
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/__init__.py", line 10, in <module>
+    from app.models.subscription import Plan
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py", line 5, in <module>
+    from app.models.user import User
+  File "/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/user.py", line 7, in <module>
+    from app.models.subscription import Plan
+ImportError: cannot import name 'Plan' from partially initialized module 'app.models.subscription' (most likely due to a circular import) (/Users/muhammadali/Desktop/startup/botbuilder/backend/app/models/subscription.py)
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
