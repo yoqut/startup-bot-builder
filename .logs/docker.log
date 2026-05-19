@@ -22,3 +22,4 @@ time="2026-05-15T14:21:36+05:00" level=warning msg="/Users/muhammadali/Desktop/s
 unable to get image 'redis:7-alpine': Cannot connect to the Docker daemon at unix:///Users/muhammadali/.docker/run/docker.sock. Is the docker daemon running?
 time="2026-05-15T14:22:13+05:00" level=warning msg="/Users/muhammadali/Desktop/startup/botbuilder/docker/docker-compose.dev.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
 unable to get image 'redis:7-alpine': Cannot connect to the Docker daemon at unix:///Users/muhammadali/.docker/run/docker.sock. Is the docker daemon running?
+==> Successfully started `postgresql@17` (label: homebrew.mxcl.postgresql@17)

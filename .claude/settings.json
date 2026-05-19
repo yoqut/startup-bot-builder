@@ -6,7 +6,12 @@
       "Bash(python3 -c \"import alembic\")",
       "Bash(python3 -m alembic current)",
       "Bash(python3 -m alembic history --verbose)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(xargs cat)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('builder', {}\\), ensure_ascii=False, indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('nav',{}\\), ensure_ascii=False\\)\\)\")",
+      "Bash(node -e \"const m = require\\('@xyflow/react'\\); console.log\\(Object.keys\\(m\\).filter\\(k=>k.includes\\('Edge'\\)\\)\\)\")"
     ]
   }
 }

@@ -9,14 +9,11 @@ pwd_context = CryptContext(
     schemes=["bcrypt"], deprecated="auto", bcrypt__truncate_error=False
 )
 
-
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
-
 def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
-
 
 def create_access_token(user_id: str, role: str) -> str:
     expire = datetime.now(timezone.utc) + timedelta(minutes=settings.JWT_EXPIRE_MINUTES)

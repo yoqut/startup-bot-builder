@@ -244,3 +244,27 @@ INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
 INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
 INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 1fe25ae80d8c, initial
+INFO  [alembic.runtime.migration] Running upgrade 1fe25ae80d8c -> add_node_types_v2, add delay and set_variable node types
+INFO  [alembic.runtime.migration] Running upgrade add_node_types_v2 -> add_system_settings, add system_settings table
+INFO  [alembic.runtime.migration] Running upgrade add_system_settings -> add_new_node_types, add auto_delete and send_to node types
+INFO  [alembic.runtime.migration] Running upgrade add_new_node_types -> add_conversation_messages, add conversation_messages table
+INFO  [alembic.runtime.migration] Running upgrade add_conversation_messages -> add_business_connections, add business_connections table and business_handler node type
+INFO  [alembic.runtime.migration] Running upgrade add_business_connections -> add_flow_chat_type, add chat_type to flows
+INFO  [alembic.runtime.migration] Running upgrade add_flow_chat_type -> add_sticky_node_type, add sticky node type
+INFO  [alembic.runtime.migration] Running upgrade add_sticky_node_type -> add_telegram_id_to_users, add telegram_id to users
+INFO  [alembic.runtime.migration] Running upgrade add_telegram_id_to_users -> add_handler_command_node_types, add handler and command node types
+INFO  [alembic.runtime.migration] Running upgrade add_handler_command_node_types -> add_templates_and_payments, add templates and payments
+INFO  [alembic.runtime.migration] Running upgrade add_templates_and_payments -> add_template_reviews, add template reviews and extended template fields
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
