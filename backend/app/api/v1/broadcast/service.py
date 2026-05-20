@@ -1,7 +1,5 @@
-import asyncio
 import uuid
 
-import httpx
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -29,45 +27,11 @@ async def create_broadcast(db: AsyncSession, bot_id: str, **kwargs) -> Broadcast
     return bc
 
 
-async def _send_one(
-    token: str,
-    chat_id: int,
-    message: str,
-    media_url: str | None,
-    media_type: str | None,
-):
-    async with httpx.AsyncClient(timeout=10) as client:
-        if media_url and media_type == "photo":
-            await client.post(
-                f"https://api.telegram.org/bot{token}/sendPhoto",
-                json={
-                    "chat_id": chat_id,
-                    "photo": media_url,
-                    "caption": message,
-                    "parse_mode": "HTML",
-                },
-            )
-        elif media_url and media_type == "video":
-            await client.post(
-                f"https://api.telegram.org/bot{token}/sendVideo",
-                json={
-                    "chat_id": chat_id,
-                    "video": media_url,
-                    "caption": message,
-                    "parse_mode": "HTML",
-                },
-            )
-        else:
-            await client.post(
-                f"https://api.telegram.org/bot{token}/sendMessage",
-                json={"chat_id": chat_id, "text": message, "parse_mode": "HTML"},
-            )
-
-
 async def run_broadcast(db: AsyncSession, broadcast: Broadcast, bot: Bot) -> None:
+    """Enqueue broadcast as a Celery task so the web process is not blocked."""
+    from app.queue.tasks import send_broadcast
+
     token = decrypt_token(bot.token)
-    broadcast.status = BroadcastStatus.running
-    await db.commit()
 
     query = select(BotUser.telegram_id).where(BotUser.bot_id == bot.id)
     if broadcast.target_tags:
@@ -82,26 +46,14 @@ async def run_broadcast(db: AsyncSession, broadcast: Broadcast, bot: Bot) -> Non
     result = await db.execute(query)
     chat_ids = [row[0] for row in result.fetchall()]
 
-    sent = 0
-    failed = 0
-    for i, chat_id in enumerate(chat_ids):
-        try:
-            await _send_one(
-                token,
-                chat_id,
-                broadcast.message or "",
-                broadcast.media_url,
-                broadcast.media_type,
-            )
-            sent += 1
-        except Exception:
-            failed += 1
-        if i % 20 == 19:
-            await asyncio.sleep(1)
-        else:
-            await asyncio.sleep(0.05)
-
-    broadcast.sent_count = sent
-    broadcast.fail_count = failed
-    broadcast.status = BroadcastStatus.done
+    broadcast.status = BroadcastStatus.running
     await db.commit()
+
+    send_broadcast.delay(
+        broadcast_id=str(broadcast.id),
+        token=token,
+        chat_ids=chat_ids,
+        message=broadcast.message or "",
+        media_url=broadcast.media_url,
+        media_type=broadcast.media_type,
+    )

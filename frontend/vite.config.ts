@@ -6,8 +6,8 @@ import path from 'path'
 // ── Tunnel URLs ────────────────────────────────────────────────────────────────
 // Update these when tunnels restart. Frontend tunnel goes in allowedHosts,
 // backend tunnel goes in proxy target.
-const FRONTEND_HOST = 'ef16-213-230-71-129.ngrok-free.app'
-const BACKEND_URL   = 'https://distributor-catalogue-spent-certain.trycloudflare.com'
+const FRONTEND_HOST = 'bob-shipments-relationship-structured.trycloudflare.com'
+const BACKEND_URL   = 'https://configured-consulting-this-reducing.trycloudflare.com'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {

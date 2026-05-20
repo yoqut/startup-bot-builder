@@ -1,18 +1,27 @@
 import asyncio
-import telebot.async_telebot as telebot_async
+
+from app.bot import get_bot
 from app.runtime.nodes.base import BaseNode, ExecutionContext, ExecutionResult
+
+# Hard cap: do not block the event loop longer than this per delay node
+MAX_DELAY_SECONDS = 10
 
 
 class DelayNode(BaseNode):
     async def execute(self, ctx: ExecutionContext) -> ExecutionResult:
-        seconds = float(self.config.get("seconds", 3))
+        seconds = min(float(self.config.get("seconds", 3)), MAX_DELAY_SECONDS)
         typing = self.config.get("typing_action", True)
 
-        bot = telebot_async.AsyncTeleBot(ctx.bot_token)
+        bot = get_bot(ctx.bot_token)
         if typing:
-            await bot.send_chat_action(ctx.chat_id, "typing")
+            try:
+                await bot.send_chat_action(ctx.chat_id, "typing")
+            except Exception:
+                pass
 
-        await asyncio.sleep(min(seconds, 30))  # cap at 30s
+        await asyncio.sleep(seconds)
 
-        next_node_id = self.config.get("next_node_id")
-        return ExecutionResult(next_node_id=next_node_id, variables=ctx.variables)
+        return ExecutionResult(
+            next_node_id=self.config.get("next_node_id"),
+            variables=ctx.variables,
+        )

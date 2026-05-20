@@ -4,8 +4,7 @@ import enum
 import uuid
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Boolean, Enum, ForeignKey, Integer, String, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, TimeStampMixin, UUIDMixin
@@ -27,7 +26,7 @@ class Flow(Base, UUIDMixin, TimeStampMixin):
     __tablename__ = "flows"
 
     bot_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=False
     )
     name: Mapped[str] = mapped_column(String, default="Main Flow")
     chat_type: Mapped[FlowChatType] = mapped_column(

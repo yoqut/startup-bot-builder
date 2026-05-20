@@ -182,12 +182,11 @@ async def dispatch(
         flow_chat_type = "user"
 
     telegram_id = telegram_user["id"]
-    bot_user = await _get_or_create_bot_user(db, bot_id, telegram_user)
 
-    # Log analytic event (committed together below)
+    # Upsert bot user, log event, and save incoming message in a single commit
+    bot_user = await _get_or_create_bot_user(db, bot_id, telegram_user, commit=False)
     await _log_event(db, bot_id, bot_user.id, update_type, message_text)
 
-    # Save incoming conversation message
     if message_text and update_type not in ("callback",):
         db.add(
             ConversationMessage(
@@ -612,7 +611,7 @@ async def _find_business_handler_node(
 
 
 async def _get_or_create_bot_user(
-    db: AsyncSession, bot_id: str, tg_user: dict
+    db: AsyncSession, bot_id: str, tg_user: dict, *, commit: bool = True
 ) -> BotUser:
     telegram_id = tg_user["id"]
     result = await db.execute(
@@ -637,5 +636,6 @@ async def _get_or_create_bot_user(
         db.add(user)
     else:
         user.last_seen_at = now
-    await db.commit()
+    if commit:
+        await db.commit()
     return user

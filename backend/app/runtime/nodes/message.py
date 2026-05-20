@@ -1,6 +1,5 @@
 import uuid
 
-import telebot.async_telebot as telebot
 from telebot.types import (
     InlineKeyboardMarkup,
     InlineKeyboardButton,
@@ -9,6 +8,7 @@ from telebot.types import (
     InputPollOption,
 )
 
+from app.bot import get_bot
 from app.runtime.nodes.base import BaseNode, ExecutionContext, ExecutionResult
 
 
@@ -36,7 +36,7 @@ def _build_markup(buttons: list[dict], layout: str):
 
 class MessageNode(BaseNode):
     async def execute(self, ctx: ExecutionContext) -> ExecutionResult:
-        bot = telebot.AsyncTeleBot(ctx.bot_token)
+        bot = get_bot(ctx.bot_token)
         msg_type = self.config.get("message_type", "text")
         text = self._render(self.config.get("text", ""), ctx.variables)
         parse_mode = self.config.get("parse_mode", "HTML")
@@ -46,7 +46,6 @@ class MessageNode(BaseNode):
         markup = _build_markup(buttons, layout) if buttons else None
         wait = bool(buttons)
 
-        # Edit the original message if triggered by an inline button click and edit mode is on
         should_edit = (
             on_callback == "edit"
             and ctx.callback_message_id is not None
@@ -55,7 +54,6 @@ class MessageNode(BaseNode):
         )
 
         sent_message_id: int | None = None
-
         biz_id = ctx.business_connection_id
 
         if should_edit and not biz_id:
@@ -69,11 +67,10 @@ class MessageNode(BaseNode):
                 )
                 if hasattr(sent, "message_id"):
                     sent_message_id = sent.message_id
-                await bot.close_session()
             except Exception:
-                await bot.close_session()
+                pass
         else:
-            send_kwargs = {}
+            send_kwargs: dict = {}
             if biz_id:
                 send_kwargs["business_connection_id"] = biz_id
 
@@ -91,8 +88,7 @@ class MessageNode(BaseNode):
                 url = self.config.get("file_url", "")
                 caption = self._render(self.config.get("caption", ""), ctx.variables)
                 sent = await bot.send_photo(
-                    ctx.chat_id,
-                    url,
+                    ctx.chat_id, url,
                     caption=caption or None,
                     reply_markup=markup,
                     **send_kwargs,
@@ -103,8 +99,7 @@ class MessageNode(BaseNode):
                 url = self.config.get("file_url", "")
                 caption = self._render(self.config.get("caption", ""), ctx.variables)
                 sent = await bot.send_video(
-                    ctx.chat_id,
-                    url,
+                    ctx.chat_id, url,
                     caption=caption or None,
                     reply_markup=markup,
                     **send_kwargs,
@@ -115,8 +110,7 @@ class MessageNode(BaseNode):
                 url = self.config.get("file_url", "")
                 caption = self._render(self.config.get("caption", ""), ctx.variables)
                 sent = await bot.send_audio(
-                    ctx.chat_id,
-                    url,
+                    ctx.chat_id, url,
                     caption=caption or None,
                     reply_markup=markup,
                     **send_kwargs,
@@ -126,7 +120,9 @@ class MessageNode(BaseNode):
             elif msg_type == "voice":
                 url = self.config.get("file_url", "")
                 sent = await bot.send_voice(
-                    ctx.chat_id, url, reply_markup=markup, **send_kwargs
+                    ctx.chat_id, url,
+                    reply_markup=markup,
+                    **send_kwargs,
                 )
                 sent_message_id = sent.message_id
 
@@ -134,8 +130,7 @@ class MessageNode(BaseNode):
                 url = self.config.get("file_url", "")
                 caption = self._render(self.config.get("caption", ""), ctx.variables)
                 sent = await bot.send_document(
-                    ctx.chat_id,
-                    url,
+                    ctx.chat_id, url,
                     caption=caption or None,
                     reply_markup=markup,
                     **send_kwargs,
@@ -147,9 +142,7 @@ class MessageNode(BaseNode):
                     self.config.get("poll_question", "Savol?"), ctx.variables
                 )
                 raw_options = self.config.get("poll_options", ["Ha", "Yo'q"])
-                options: list[InputPollOption] = [
-                    InputPollOption(o) for o in raw_options
-                ]
+                options: list[InputPollOption] = [InputPollOption(o) for o in raw_options]
                 poll_type = self.config.get("poll_type", "regular")
                 await bot.send_poll(
                     ctx.chat_id,
@@ -160,12 +153,9 @@ class MessageNode(BaseNode):
                 )
                 wait = False
 
-            await bot.close_session()
-
         if sent_message_id:
             ctx.variables["last_message_id"] = sent_message_id
 
-        # Save outgoing message to conversation log
         if ctx.db and (text or msg_type != "text"):
             try:
                 from app.models.conversation import ConversationMessage
@@ -183,7 +173,6 @@ class MessageNode(BaseNode):
             except Exception:
                 pass
 
-        # For reply keyboard: route via handle if text matches a button label
         handle: str = ""
         if wait and layout == "reply" and ctx.message_text:
             for i, btn in enumerate(buttons):

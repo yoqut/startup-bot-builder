@@ -1,8 +1,7 @@
 import enum
 import uuid
 
-from sqlalchemy import ARRAY, Enum, ForeignKey, Integer, String, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Enum, ForeignKey, Integer, JSON, String, Text, Uuid
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimeStampMixin, UUIDMixin
@@ -20,12 +19,12 @@ class Broadcast(Base, UUIDMixin, TimeStampMixin):
     __tablename__ = "broadcasts"
 
     bot_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=False
     )
     message: Mapped[str | None] = mapped_column(Text, nullable=True)
     media_url: Mapped[str | None] = mapped_column(String, nullable=True)
     media_type: Mapped[str | None] = mapped_column(String, nullable=True)
-    target_tags: Mapped[list[str]] = mapped_column(ARRAY(String), default=list)
+    target_tags: Mapped[list] = mapped_column(JSON, default=list)
     status: Mapped[BroadcastStatus] = mapped_column(
         Enum(BroadcastStatus), default=BroadcastStatus.draft
     )

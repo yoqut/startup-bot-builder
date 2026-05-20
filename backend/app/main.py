@@ -17,11 +17,9 @@ from app.api.v1.flows.controller import FlowsController
 from app.api.v1.payments.controller import PaymentsController
 from app.api.v1.templates.controller import TemplatesController
 from app.webhook.controller import WebhookController
-from app.cache.redis import close_redis
+from app.cache.redis import close_redis, init_redis
 from app.settings import settings
 from app.utils.tg_log_handler import setup_telegram_log_handler
-
-# ── Logging sozlamalari ────────────────────────────────────────────────────────
 
 logging.config.dictConfig(
     {
@@ -41,19 +39,21 @@ logging.config.dictConfig(
             },
         },
         "root": {
-            "level": "INFO",
+            "level": "DEBUG" if settings.DEBUG else "INFO",
             "handlers": ["console"],
         },
         "loggers": {
             "uvicorn": {"level": "INFO", "propagate": True},
             "uvicorn.access": {"level": "WARNING", "propagate": True},
-            "sqlalchemy.engine": {"level": "WARNING", "propagate": True},
+            "sqlalchemy.engine": {
+                "level": "DEBUG" if settings.DEBUG else "WARNING",
+                "propagate": True,
+            },
             "httpx": {"level": "WARNING", "propagate": True},
         },
     }
 )
 
-# Telegram xato bildirishnomasi (ERROR+ → YoqutConstructor_bot → chat_id 1230394567)
 setup_telegram_log_handler()
 
 logger = logging.getLogger(__name__)
@@ -68,6 +68,8 @@ openapi_config = OpenAPIConfig(title="TelegramBotBuilder API", version="1.0.0")
 
 
 async def on_startup() -> None:
+    await init_redis()
+
     if not settings.MANAGER_BOT_TOKEN:
         return
     webhook_url = f"{settings.WEBHOOK_BASE_URL}/webhook/manager"
@@ -77,7 +79,12 @@ async def on_startup() -> None:
                 f"https://api.telegram.org/bot{settings.MANAGER_BOT_TOKEN}/setWebhook",
                 json={
                     "url": webhook_url,
-                    "allowed_updates": ["message", "managed_bot", "callback_query", "pre_checkout_query"],
+                    "allowed_updates": [
+                        "message",
+                        "managed_bot",
+                        "callback_query",
+                        "pre_checkout_query",
+                    ],
                 },
             )
             data = r.json()
@@ -94,7 +101,7 @@ async def on_shutdown() -> None:
 
 
 app = Litestar(
-    debug=True,
+    debug=settings.DEBUG,
     route_handlers=[
         AdminController,
         AnalyticsController,
@@ -113,7 +120,13 @@ app = Litestar(
     on_startup=[on_startup],
     on_shutdown=[on_shutdown],
 )
+
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run(
+        "app.main:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=settings.DEBUG,
+    )

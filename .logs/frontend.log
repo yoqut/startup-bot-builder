@@ -2,41 +2,9 @@
 > botbuilder-frontend@0.1.0 dev
 > vite
 
+[2m12:42:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
 
-  VITE v6.4.2  ready in 352 ms
+  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m890[22m[2m[0m ms[22m
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-5:39:18 PM [vite] (client) hmr update /src/pages/Bots/BotCard.tsx, /src/index.css
-5:39:40 PM [vite] (client) hmr update /src/pages/Bots/index.tsx, /src/index.css
-5:39:53 PM [vite] (client) hmr update /src/pages/Bots/index.tsx, /src/index.css
-5:43:59 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/HandlerPanel.tsx, /src/index.css
-5:44:11 PM [vite] (client) hmr update /src/pages/FlowBuilder/NodePanel.tsx, /src/index.css
-5:44:25 PM [vite] (client) hmr update /src/pages/FlowBuilder/NodePanel.tsx, /src/index.css
-5:44:35 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/shared.tsx, /src/index.css
-5:44:37 PM [vite] (client) hmr invalidate /src/pages/FlowBuilder/panels/shared.tsx Could not Fast Refresh ("TYPE_LABELS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-5:44:37 PM [vite] (client) hmr update /src/index.css, /src/pages/FlowBuilder/NodePanel.tsx, /src/pages/FlowBuilder/panels/ButtonPanel.tsx, /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/pages/FlowBuilder/panels/HandlerPanel.tsx, /src/pages/FlowBuilder/panels/MessagePanel.tsx, /src/pages/FlowBuilder/panels/DataPanels.tsx, /src/pages/FlowBuilder/panels/ButtonList.tsx, /src/pages/FlowBuilder/panels/CommandList.tsx, /src/pages/FlowBuilder/panels/TextConditions.tsx
-5:44:38 PM [vite] (client) hmr invalidate /src/pages/FlowBuilder/panels/TextConditions.tsx Could not Fast Refresh ("COND_TYPES" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-5:44:38 PM [vite] (client) hmr update /src/index.css, /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/pages/FlowBuilder/panels/HandlerPanel.tsx
-5:45:05 PM [vite] (client) hmr update /src/pages/FlowBuilder/components/CanvasEmptyState.tsx, /src/index.css
-5:48:37 PM [vite] (client) hmr update /src/components/flow/nodes/NodeShell.tsx, /src/index.css
-5:48:39 PM [vite] (client) hmr invalidate /src/components/flow/nodes/NodeShell.tsx Could not Fast Refresh (new export)
-5:48:39 PM [vite] (client) hmr update /src/index.css, /src/components/flow/nodes/CustomNode.tsx, /src/pages/FlowBuilder/NodePanel.tsx
-5:55:58 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
-5:56:06 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
-5:56:13 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
-5:56:17 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
-5:56:50 PM [vite] (client) hmr update /src/components/flow/edges/CustomEdge.tsx, /src/index.css
-6:00:49 PM [vite] (client) hmr update /src/components/flow/nodes/NodeShell.tsx, /src/index.css
-6:00:52 PM [vite] (client) hmr invalidate /src/components/flow/nodes/NodeShell.tsx Could not Fast Refresh ("METHOD_CLS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-6:00:52 PM [vite] (client) hmr update /src/index.css, /src/components/flow/nodes/CustomNode.tsx, /src/pages/FlowBuilder/NodePanel.tsx
-6:01:15 PM [vite] (client) hmr update /src/index.css
-6:03:59 PM [vite] (client) hmr update /src/components/flow/nodes/NodeShell.tsx, /src/index.css
-6:04:02 PM [vite] (client) hmr invalidate /src/components/flow/nodes/NodeShell.tsx Could not Fast Refresh ("METHOD_CLS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-6:04:02 PM [vite] (client) hmr update /src/index.css, /src/components/flow/nodes/CustomNode.tsx, /src/pages/FlowBuilder/NodePanel.tsx
-6:04:22 PM [vite] (client) hmr update /src/index.css
-6:05:27 PM [vite] (client) hmr update /src/components/flow/nodes/NodeShell.tsx, /src/index.css
-6:05:29 PM [vite] (client) hmr invalidate /src/components/flow/nodes/NodeShell.tsx Could not Fast Refresh ("METHOD_CLS" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
-6:05:29 PM [vite] (client) hmr update /src/index.css, /src/components/flow/nodes/CustomNode.tsx, /src/pages/FlowBuilder/NodePanel.tsx
-6:05:39 PM [vite] (client) hmr update /src/index.css
-6:05:47 PM [vite] (client) hmr update /src/index.css
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m

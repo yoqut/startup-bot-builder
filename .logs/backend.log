@@ -1,8 +1,2 @@
-INFO:     Will watch for changes in these directories: ['/Users/muhammadali/Desktop/startup/botbuilder/backend']
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [70231] using WatchFiles
-2026-05-18 15:56:14 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi â€” Telegram logi o'chirilgan
-INFO - 2026-05-18 15:56:14,372 - uvicorn.error - server - Started server process [70251]
-INFO - 2026-05-18 15:56:14,372 - uvicorn.error - on - Waiting for application startup.
-INFO - 2026-05-18 15:56:14,874 - app.main - main - Manager bot webhook registered: https://distributor-catalogue-spent-certain.trycloudflare.com/webhook/manager
-INFO - 2026-05-18 15:56:14,874 - uvicorn.error - on - Application startup complete.
+2026-05-19 12:41:51 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+ 2026-05-19 15:09:31 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan

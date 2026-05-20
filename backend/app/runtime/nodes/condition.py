@@ -23,7 +23,7 @@ class ConditionNode(BaseNode):
 
         try:
             result = fn(actual, value)
-        except ValueError, TypeError:
+        except (ValueError, TypeError):
             result = False
 
         return ExecutionResult(

@@ -5,10 +5,9 @@ from datetime import datetime
 from typing import TYPE_CHECKING
 
 from sqlalchemy import (
-    Boolean, DateTime, Float, ForeignKey, Integer, String, Text,
-    UniqueConstraint, func,
+    Boolean, DateTime, Float, ForeignKey, Integer, JSON, String, Text,
+    UniqueConstraint, Uuid, func,
 )
-from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, TimeStampMixin, UUIDMixin
@@ -28,7 +27,7 @@ class Template(Base, UUIDMixin, TimeStampMixin):
     __tablename__ = "templates"
 
     creator_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -37,7 +36,7 @@ class Template(Base, UUIDMixin, TimeStampMixin):
     price_stars: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     is_published: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     is_featured: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
-    flow_data: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
+    flow_data: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     preview_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
     uses_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     avg_rating: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
@@ -58,10 +57,10 @@ class UserTemplate(Base):
     __tablename__ = "user_templates"
 
     user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+        Uuid(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
     )
     template_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("templates.id", ondelete="CASCADE"), primary_key=True
+        Uuid(as_uuid=True), ForeignKey("templates.id", ondelete="CASCADE"), primary_key=True
     )
     unlocked_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
@@ -78,10 +77,10 @@ class TemplateReview(Base, UUIDMixin):
     )
 
     user_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
     template_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("templates.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("templates.id", ondelete="CASCADE"), nullable=False
     )
     rating: Mapped[int] = mapped_column(Integer, nullable=False)  # 1-5
     comment: Mapped[str | None] = mapped_column(Text, nullable=True)

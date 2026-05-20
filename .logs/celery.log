@@ -1,13 +1,13 @@
  
- -------------- celery@Muhammadalis-MacBook-Pro.local v5.6.3 (recovery)
+ -------------- celery@DESKTOP-96A1J60 v5.6.3 (recovery)
 --- ***** ----- 
--- ******* ---- macOS-26.3-x86_64-i386-64bit-Mach-O 2026-05-18 15:56:16
+-- ******* ---- Windows-11-10.0.26200-SP0 2026-05-19 12:45:25
 - *** --- * --- 
 - ** ---------- [config]
-- ** ---------- .> app:         botbuilder:0x10bea2660
+- ** ---------- .> app:         botbuilder:0x1ecfec2b230
 - ** ---------- .> transport:   redis://localhost:6379/0
 - ** ---------- .> results:     redis://localhost:6379/0
-- *** --- * --- .> concurrency: 16 (prefork)
+- *** --- * --- .> concurrency: 12 (solo)
 -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
 --- ***** ----- 
  -------------- [queues]
@@ -15,9 +15,5 @@
                 
 
 [tasks]
-  . app.queue.tasks.send_broadcast
+  . tasks.send_broadcast
 
-[2026-05-18 15:56:18,189: INFO/MainProcess] Connected to redis://localhost:6379/0
-[2026-05-18 15:56:18,210: INFO/MainProcess] mingle: searching for neighbors
-[2026-05-18 15:56:19,221: INFO/MainProcess] mingle: all alone
-[2026-05-18 15:56:19,272: INFO/MainProcess] celery@Muhammadalis-MacBook-Pro.local ready.

@@ -48,7 +48,9 @@ apiClient.interceptors.response.use(
             return res.data.access_token
           })
           .catch((err) => {
-            localStorage.clear()
+            // Only remove auth tokens — do not wipe unrelated localStorage keys
+            localStorage.removeItem('access_token')
+            localStorage.removeItem('refresh_token')
             _redirectToLogin()
             return Promise.reject(err)
           })

@@ -53,25 +53,33 @@ async def execute_flow(
     callback_message_id: int | None = None,
     business_connection_id: str | None = None,
 ) -> None:
-    # Load starting node to get flow_id
     try:
         start_uuid = uuid.UUID(start_node_id)
-    except ValueError, AttributeError:
+    except (ValueError, AttributeError):
         return
+
+    # Load start node to get flow_id
     result = await db.execute(select(FlowNode).where(FlowNode.id == start_uuid))
     start_node = result.scalar_one_or_none()
     if not start_node:
         return
 
+    flow_id = start_node.flow_id
+
+    # Load ALL nodes for this flow once — eliminates N+1 per hop
+    nodes_result = await db.execute(
+        select(FlowNode).where(FlowNode.flow_id == flow_id)
+    )
+    node_map: dict[str, FlowNode] = {
+        str(n.id): n for n in nodes_result.scalars().all()
+    }
+
     # Load ALL edges for this flow once — build adjacency map
     edges_result = await db.execute(
-        select(FlowEdge).where(FlowEdge.flow_id == start_node.flow_id)
+        select(FlowEdge).where(FlowEdge.flow_id == flow_id)
     )
-    edges = edges_result.scalars().all()
-
-    # edge_map[source_node_id] = list of {handle, target}
     edge_map: dict[str, list[dict]] = {}
-    for e in edges:
+    for e in edges_result.scalars().all():
         sid = str(e.source_node_id)
         edge_map.setdefault(sid, []).append(
             {
@@ -97,7 +105,7 @@ async def execute_flow(
         business_connection_id=business_connection_id,
     )
 
-    node_id = start_node_id
+    node_id: str | None = start_node_id
     visited: set[str] = set()
 
     for _ in range(MAX_HOPS):
@@ -105,24 +113,18 @@ async def execute_flow(
             break
         visited.add(node_id)
 
-        # Load node
-        try:
-            node_uuid = uuid.UUID(node_id)
-        except ValueError, AttributeError:
-            break
-        node_result = await db.execute(select(FlowNode).where(FlowNode.id == node_uuid))
-        node = node_result.scalar_one_or_none()
+        node = node_map.get(node_id)
         if not node or node.type == NodeType.end:
+            node_id = None
             break
 
         node_class = NODE_REGISTRY.get(node.type)
         if not node_class:
-            # Unknown type: skip to first outgoing edge
             outgoing = edge_map.get(node_id, [])
             node_id = outgoing[0]["target"] if outgoing else None
             continue
 
-        # Enrich message node config with button targets from edges
+        # Enrich message/button node config with resolved button targets from edges
         config = dict(node.config)
         if node.type in (NodeType.message, NodeType.button):
             outgoing = edge_map.get(node_id, [])
@@ -154,7 +156,6 @@ async def execute_flow(
             ctx.message_text = None
 
         if exec_result.wait_for_input:
-            # Pause execution — save current node so dispatcher resumes here
             await state_manager.save_state(
                 bot_id,
                 telegram_user_id,
@@ -173,15 +174,15 @@ async def execute_flow(
             handle = exec_result.handle or "default"
             edge = next((e for e in outgoing if e["handle"] == handle), None)
             if edge is None and outgoing:
-                edge = outgoing[0]  # fallback to first edge
+                edge = outgoing[0]
             node_id = edge["target"] if edge else None
 
-    # Clear or update state at end
+    # Flow completed — clear current_node_id so next message re-matches a handler
     await state_manager.save_state(
         bot_id,
         telegram_user_id,
         {
-            "current_node_id": node_id,
+            "current_node_id": None,
             "variables": ctx.variables,
         },
     )

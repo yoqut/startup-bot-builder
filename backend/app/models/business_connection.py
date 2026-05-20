@@ -1,8 +1,6 @@
 import uuid
 
-from sqlalchemy import BigInteger, Boolean, String
-from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import ForeignKey
+from sqlalchemy import BigInteger, Boolean, ForeignKey, String, Uuid
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimeStampMixin, UUIDMixin
@@ -12,7 +10,7 @@ class BusinessConnection(Base, UUIDMixin, TimeStampMixin):
     __tablename__ = "business_connections"
 
     bot_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+        Uuid(as_uuid=True),
         ForeignKey("bots.id", ondelete="CASCADE"),
         nullable=False,
         index=True,

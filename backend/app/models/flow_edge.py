@@ -1,7 +1,6 @@
 import uuid
 
-from sqlalchemy import ForeignKey, String
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import ForeignKey, Index, String, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, UUIDMixin
@@ -10,17 +9,20 @@ from app.models.flow import Flow
 
 class FlowEdge(Base, UUIDMixin):
     __tablename__ = "flow_edges"
+    __table_args__ = (
+        Index("ix_flow_edges_flow_id", "flow_id"),
+    )
 
     flow_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("flows.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("flows.id", ondelete="CASCADE"), nullable=False
     )
     source_node_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+        Uuid(as_uuid=True),
         ForeignKey("flow_nodes.id", ondelete="CASCADE"),
         nullable=False,
     )
     target_node_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+        Uuid(as_uuid=True),
         ForeignKey("flow_nodes.id", ondelete="CASCADE"),
         nullable=False,
     )

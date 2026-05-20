@@ -111,7 +111,11 @@ async def get_or_create_user_by_telegram(
 
 
 def verify_telegram_widget_hash(data: dict, bot_token: str) -> bool:
+    data = dict(data)  # do not mutate the caller's dict
     received_hash = data.pop("hash", "")
+    auth_date = int(data.get("auth_date", 0))
+    if time.time() - auth_date > TELEGRAM_AUTH_MAX_AGE:
+        return False
     data_check_string = "\n".join(
         f"{k}={v}" for k, v in sorted(data.items()) if v is not None
     )
@@ -119,9 +123,6 @@ def verify_telegram_widget_hash(data: dict, bot_token: str) -> bool:
     expected_hash = hmac.new(
         secret_key, data_check_string.encode(), hashlib.sha256
     ).hexdigest()
-    auth_date = int(data.get("auth_date", 0))
-    if time.time() - auth_date > TELEGRAM_AUTH_MAX_AGE:
-        return False
     return hmac.compare_digest(expected_hash, received_hash)
 
 

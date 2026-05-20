@@ -1,8 +1,7 @@
 import enum
 import uuid
 
-from sqlalchemy import Enum, Float, ForeignKey, String
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy import Enum, Float, ForeignKey, Index, JSON, String, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, TimeStampMixin, UUIDMixin
@@ -32,14 +31,18 @@ class NodeType(str, enum.Enum):
 
 class FlowNode(Base, UUIDMixin, TimeStampMixin):
     __tablename__ = "flow_nodes"
+    __table_args__ = (
+        Index("ix_flow_nodes_flow_id", "flow_id"),
+        Index("ix_flow_nodes_flow_id_type", "flow_id", "type"),
+    )
 
     flow_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), ForeignKey("flows.id", ondelete="CASCADE"), nullable=False
+        Uuid(as_uuid=True), ForeignKey("flows.id", ondelete="CASCADE"), nullable=False
     )
     type: Mapped[NodeType] = mapped_column(Enum(NodeType), nullable=False)
     label: Mapped[str | None] = mapped_column(String, nullable=True)
     position_x: Mapped[float] = mapped_column(Float, default=0)
     position_y: Mapped[float] = mapped_column(Float, default=0)
-    config: Mapped[dict] = mapped_column(JSONB, default=dict)
+    config: Mapped[dict] = mapped_column(JSON, default=dict)
 
     flow: Mapped["Flow"] = relationship("Flow", back_populates="nodes")  # noqa: F821

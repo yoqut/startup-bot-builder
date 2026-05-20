@@ -12,6 +12,11 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# Override alembic.ini URL with the app's DATABASE_URL so migrations always
+# target the same database the running app uses.
+from app.settings import settings as _app_settings
+config.set_main_option("sqlalchemy.url", _app_settings.DATABASE_URL)
+
 target_metadata = Base.metadata
 
 
