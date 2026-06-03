@@ -26,3 +26,6 @@
 4:35:09 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
 4:35:20 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
 4:35:25 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
+2:41:14 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
+2:41:14 PM [vite] (client) hmr update /src/pages/FlowBuilder/index.tsx, /src/index.css
+2:41:31 PM [vite] (client) hmr update /src/components/flow/nodes/NodeShell.tsx, /src/index.css

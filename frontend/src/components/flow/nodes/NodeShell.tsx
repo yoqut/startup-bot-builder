@@ -23,8 +23,8 @@ export function InHandle() {
       position={Position.Top}
       className="flow-handle flow-handle-in !rounded-full"
       style={{
-        width: 16, height: 16,
-        top: -8,
+        width: 20, height: 20,
+        top: -10,
         background: 'rgba(36,129,204,0.08)',
         border: '1.5px solid #3d6080',
         boxShadow: '0 0 6px rgba(36,129,204,0.15)',
@@ -44,8 +44,8 @@ export function OutHandle({ id, left }: { id?: string; left?: string }) {
       id={id}
       className={`flow-handle flow-handle-out flow-out-${variant} !rounded-full`}
       style={{
-        width: 16, height: 16,
-        bottom: -8,
+        width: 20, height: 20,
+        bottom: -10,
         background: `${color}14`,
         border: `1.5px solid ${color}`,
         boxShadow: `0 0 8px ${color}30`,

@@ -387,6 +387,8 @@ function FlowCanvas() {
             onReconnectStart={onReconnectStart}
             onReconnectEnd={onReconnectEnd as any}
             reconnectRadius={20}
+            connectionRadius={40}
+            connectOnClick
             onNodeDragStart={onNodeDragStart}
             onNodeDragStop={onNodeDragStop}
             onNodeClick={(_, node) => { closePanel(); selectNode(node) }}
