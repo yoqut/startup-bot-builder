@@ -97,9 +97,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /opt/botbuilder
+            cd /var/www/constructor
             git pull origin main
-            docker compose -f docker/docker-compose.yml build --no-cache
+            docker compose -f docker/docker-compose.yml build
             docker compose -f docker/docker-compose.yml up -d
             docker compose -f docker/docker-compose.yml exec -T backend uv run alembic upgrade head
             docker image prune -f
