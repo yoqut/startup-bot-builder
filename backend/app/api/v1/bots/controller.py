@@ -96,14 +96,84 @@ class BotsController(Controller):
 
     @delete("/{bot_id:str}")
     async def remove_bot(self, bot_id: str, request: Request, db: AsyncSession) -> None:
+        import logging, uuid as _uuid
         user_id = get_current_user_id(request)
+        try:
+            _uuid.UUID(bot_id)
+        except ValueError:
+            raise HTTPException(status_code=404, detail="Bot topilmadi")
         bot = await get_bot_by_id(db, bot_id, user_id)
         if not bot:
             raise HTTPException(status_code=404, detail="Bot topilmadi")
         if bot.is_active:
-            await delete_webhook(db, bot)
+            try:
+                await delete_webhook(db, bot)
+            except Exception as e:
+                logging.getLogger(__name__).warning("Webhook o'chirishda xato (bot o'chiriladi): %s", e)
+                bot.is_active = False
         await db.delete(bot)
         await db.commit()
+
+    @post("/{bot_id:str}/duplicate")
+    async def duplicate_bot(
+        self, bot_id: str, request: Request, db: AsyncSession
+    ) -> BotResponse:
+        import uuid as _uuid
+        user_id = get_current_user_id(request)
+        bot = await get_bot_by_id(db, bot_id, user_id)
+        if not bot:
+            raise HTTPException(status_code=404, detail="Bot topilmadi")
+        from app.models.bot import Bot as BotModel
+        from app.models.flow import Flow
+        from app.models.flow_node import FlowNode
+        from app.models.flow_edge import FlowEdge
+        from sqlalchemy import select
+        new_bot = BotModel(
+            user_id=_uuid.UUID(user_id),
+            name=f"{bot.name} (copy)",
+            token=f"PENDING:{_uuid.uuid4().hex}",
+            username=None,
+            is_active=False,
+        )
+        db.add(new_bot)
+        await db.flush()
+        flows = (await db.execute(select(Flow).where(Flow.bot_id == bot.id))).scalars().all()
+        for flow in flows:
+            new_flow = Flow(
+                bot_id=new_bot.id,
+                name=flow.name,
+                is_published=False,
+            )
+            db.add(new_flow)
+            await db.flush()
+            nodes = (await db.execute(select(FlowNode).where(FlowNode.flow_id == flow.id))).scalars().all()
+            node_id_map: dict[_uuid.UUID, _uuid.UUID] = {}
+            for node in nodes:
+                new_node = FlowNode(
+                    flow_id=new_flow.id,
+                    type=node.type,
+                    label=node.label,
+                    config=node.config,
+                    position_x=node.position_x,
+                    position_y=node.position_y,
+                )
+                db.add(new_node)
+                await db.flush()
+                node_id_map[node.id] = new_node.id
+            edges = (await db.execute(select(FlowEdge).where(FlowEdge.flow_id == flow.id))).scalars().all()
+            for edge in edges:
+                new_src = node_id_map.get(edge.source_node_id)
+                new_tgt = node_id_map.get(edge.target_node_id)
+                if new_src and new_tgt:
+                    db.add(FlowEdge(
+                        flow_id=new_flow.id,
+                        source_node_id=new_src,
+                        target_node_id=new_tgt,
+                        condition_key=edge.condition_key,
+                    ))
+        await db.commit()
+        await db.refresh(new_bot)
+        return _fmt(new_bot)
 
     @post("/{bot_id:str}/activate")
     async def activate(

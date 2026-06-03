@@ -1,2 +1,150 @@
-2026-05-19 12:41:51 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi � Telegram logi o'chirilgan
- 2026-05-19 15:09:31 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi � Telegram logi o'chirilgan
+warning: `VIRTUAL_ENV=/Library/Frameworks/Python.framework/Versions/3.12` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+INFO:     Will watch for changes in these directories: ['/Users/muhammadali/Desktop/startup/botbuilder/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [51232] using WatchFiles
+2026-06-02 14:36:31 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 14:36:31,280 - uvicorn.error - server - Started server process [51234]
+INFO - 2026-06-02 14:36:31,280 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 14:36:32,371 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 14:36:32,372 - uvicorn.error - on - Application startup complete.
+WARNING - 2026-06-02 14:38:05,331 - app.webhook.controller - controller - Webhook: no active bot found for token fragment 'AAEj528d'
+WARNING - 2026-06-02 14:39:20,917 - app.webhook.controller - controller - Webhook: no active bot found for token fragment 'AAEj528d'
+INFO - 2026-06-02 14:41:07,230 - app.api.v1.auth.controller - controller - Telegram WebApp login: tg_id=1230394567 user_id=d97bd111-bfe7-41c2-ba8f-d5f4d0e21814
+WARNING:  WatchFiles detected changes in 'app/api/v1/bots/controller.py'. Reloading...
+INFO - 2026-06-02 14:48:20,804 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 14:48:20,905 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 14:48:22 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 14:48:22,608 - uvicorn.error - server - Started server process [54376]
+INFO - 2026-06-02 14:48:22,609 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 14:48:23,047 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 14:48:23,048 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/api/v1/bots/controller.py'. Reloading...
+INFO - 2026-06-02 14:48:38,464 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 14:48:38,565 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 14:48:39 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 14:48:39,898 - uvicorn.error - server - Started server process [54454]
+INFO - 2026-06-02 14:48:39,898 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 14:48:40,262 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 14:48:40,263 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/api/v1/bots/controller.py'. Reloading...
+INFO - 2026-06-02 14:48:59,817 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 14:48:59,916 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 14:49:01 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 14:49:01,260 - uvicorn.error - server - Started server process [54549]
+INFO - 2026-06-02 14:49:01,260 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 14:49:01,622 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 14:49:01,622 - uvicorn.error - on - Application startup complete.
+WARNING - 2026-06-02 15:11:07,860 - app.api.v1.bots.controller - controller - Webhook o'chirishda xato (bot o'chiriladi): 
+INFO - 2026-06-02 15:54:57,195 - app.api.v1.auth.controller - controller - Telegram WebApp login: tg_id=1230394567 user_id=d97bd111-bfe7-41c2-ba8f-d5f4d0e21814
+WARNING:  WatchFiles detected changes in 'app/runtime/nodes/business_handler.py'. Reloading...
+INFO - 2026-06-02 16:03:17,151 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 16:03:17,252 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 16:03:19 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 16:03:19,376 - uvicorn.error - server - Started server process [72984]
+INFO - 2026-06-02 16:03:19,376 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 16:03:21,761 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 16:03:21,761 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in '.venv/lib/python3.14/site-packages/py.py'. Reloading...
+INFO - 2026-06-02 17:13:45,850 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:13:45,950 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:13:47 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:13:47,789 - uvicorn.error - server - Started server process [90949]
+INFO - 2026-06-02 17:13:47,789 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:13:48,242 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:13:48,242 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO - 2026-06-02 17:14:10,821 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:14:10,922 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:14:12 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:14:12,273 - uvicorn.error - server - Started server process [91063]
+INFO - 2026-06-02 17:14:12,274 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:14:12,625 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:14:12,625 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_handler_node.py'. Reloading...
+INFO - 2026-06-02 17:14:39,226 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:14:39,328 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:14:40 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:14:40,695 - uvicorn.error - server - Started server process [91181]
+INFO - 2026-06-02 17:14:40,695 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:14:41,126 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:14:41,127 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_business_handler_node.py'. Reloading...
+INFO - 2026-06-02 17:15:01,390 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:15:01,491 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:15:02 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:15:02,811 - uvicorn.error - server - Started server process [91283]
+INFO - 2026-06-02 17:15:02,811 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:15:03,214 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:15:03,215 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_condition_node.py'. Reloading...
+INFO - 2026-06-02 17:15:16,313 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:15:16,415 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:15:17 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:15:17,765 - uvicorn.error - server - Started server process [91340]
+INFO - 2026-06-02 17:15:17,765 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:15:18,116 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:15:18,117 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_set_variable_node.py'. Reloading...
+INFO - 2026-06-02 17:15:26,595 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:15:26,696 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:15:27 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:15:28,025 - uvicorn.error - server - Started server process [91388]
+INFO - 2026-06-02 17:15:28,025 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:15:28,411 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:15:28,412 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_dispatcher_parser.py'. Reloading...
+INFO - 2026-06-02 17:15:49,977 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:15:50,077 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:15:51 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:15:51,471 - uvicorn.error - server - Started server process [91491]
+INFO - 2026-06-02 17:15:51,471 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:15:51,820 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:15:51,821 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_bots_service.py'. Reloading...
+INFO - 2026-06-02 17:16:05,530 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:16:05,630 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:16:06 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:16:06,977 - uvicorn.error - server - Started server process [91567]
+INFO - 2026-06-02 17:16:06,978 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:16:07,344 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:16:07,345 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_base_node.py'. Reloading...
+INFO - 2026-06-02 17:16:15,310 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:16:15,411 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:16:16 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:16:16,760 - uvicorn.error - server - Started server process [91614]
+INFO - 2026-06-02 17:16:16,760 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:16:17,102 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:16:17,102 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/test_input_node_validators.py'. Reloading...
+INFO - 2026-06-02 17:16:27,381 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:16:27,483 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:16:28 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:16:28,851 - uvicorn.error - server - Started server process [91670]
+INFO - 2026-06-02 17:16:28,851 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:16:29,566 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:16:29,566 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/db/migrations/versions/692c114a7773_sync_models_with_db.py'. Reloading...
+INFO - 2026-06-02 17:17:17,732 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:17:17,833 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:17:19 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:17:19,493 - uvicorn.error - server - Started server process [91946]
+INFO - 2026-06-02 17:17:19,493 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:17:19,858 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:17:19,858 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/db/migrations/versions/692c114a7773_sync_models_with_db.py'. Reloading...
+INFO - 2026-06-02 17:17:42,621 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:17:42,723 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:17:44 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:17:44,116 - uvicorn.error - server - Started server process [92084]
+INFO - 2026-06-02 17:17:44,116 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:17:44,477 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:17:44,477 - uvicorn.error - on - Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/db/migrations/versions/692c114a7773_sync_models_with_db.py'. Reloading...
+INFO - 2026-06-02 17:17:47,699 - uvicorn.error - server - Shutting down
+INFO - 2026-06-02 17:17:47,801 - uvicorn.error - on - Waiting for application shutdown.
+2026-06-02 17:17:49 [WARNING] app.utils.tg_log_handler: TelegramLogHandler: MANAGER_BOT_TOKEN topilmadi — Telegram logi o'chirilgan
+INFO - 2026-06-02 17:17:49,200 - uvicorn.error - server - Started server process [92113]
+INFO - 2026-06-02 17:17:49,200 - uvicorn.error - on - Waiting for application startup.
+INFO - 2026-06-02 17:17:49,533 - app.main - main - Manager bot webhook registered: https://practitioner-infectious-meant-awards.trycloudflare.com/webhook/manager
+INFO - 2026-06-02 17:17:49,534 - uvicorn.error - on - Application startup complete.

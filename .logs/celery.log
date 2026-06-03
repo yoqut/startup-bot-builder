@@ -1,13 +1,14 @@
+warning: `VIRTUAL_ENV=/Library/Frameworks/Python.framework/Versions/3.12` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
  
- -------------- celery@DESKTOP-96A1J60 v5.6.3 (recovery)
+ -------------- celery@Muhammadalis-MacBook-Pro.local v5.6.3 (recovery)
 --- ***** ----- 
--- ******* ---- Windows-11-10.0.26200-SP0 2026-05-19 12:45:25
+-- ******* ---- macOS-26.3-x86_64-i386-64bit-Mach-O 2026-06-02 14:27:42
 - *** --- * --- 
 - ** ---------- [config]
-- ** ---------- .> app:         botbuilder:0x1ecfec2b230
+- ** ---------- .> app:         botbuilder:0x10747a660
 - ** ---------- .> transport:   redis://localhost:6379/0
 - ** ---------- .> results:     redis://localhost:6379/0
-- *** --- * --- .> concurrency: 12 (solo)
+- *** --- * --- .> concurrency: 16 (prefork)
 -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
 --- ***** ----- 
  -------------- [queues]
@@ -17,3 +18,7 @@
 [tasks]
   . tasks.send_broadcast
 
+[2026-06-02 14:27:43,916: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2026-06-02 14:27:43,939: INFO/MainProcess] mingle: searching for neighbors
+[2026-06-02 14:27:44,950: INFO/MainProcess] mingle: all alone
+[2026-06-02 14:27:45,001: INFO/MainProcess] celery@Muhammadalis-MacBook-Pro.local ready.

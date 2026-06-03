@@ -39,7 +39,7 @@ const TRIGGERS_CHANNEL = [
 // ── Section divider ────────────────────────────────────────────────────────────
 function SectionLabel({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-2 -mx-3 px-3 py-[6px] bg-tg-elevated/60 border-y border-tg-darkborder">
+    <div className="flex items-center justify-center gap-2 -mx-3 px-3 py-[6px] bg-tg-elevated/60 border-y border-tg-darkborder">
       <span className="text-[9px] font-bold uppercase tracking-[0.1em] text-tg-muted">{label}</span>
     </div>
   )

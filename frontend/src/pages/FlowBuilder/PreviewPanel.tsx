@@ -21,7 +21,7 @@ const MEDIA: Record<string, { emoji: string; label: string }> = {
   document: { emoji: '📄',  label: 'Document' },
 }
 
-function Bubble({ msg, onInlineClick }: { msg: ChatMsg; onInlineClick: (id: string, label: string) => void }) {
+function Bubble({ msg, onInlineClick }: { msg: ChatMsg; onInlineClick: (nodeId: string, label: string, msgId: string) => void }) {
   if (msg.role === 'system') {
     return (
       <div className="flex justify-center my-1 px-3">
@@ -90,15 +90,25 @@ function Bubble({ msg, onInlineClick }: { msg: ChatMsg; onInlineClick: (id: stri
         </div>
         {msg.buttons && msg.layout !== 'reply' && (
           <div className="space-y-[3px] pt-0.5">
-            {msg.buttons.map((btn, i) => (
-              <button key={i}
-                onClick={() => onInlineClick(btn.nodeId, btn.label)}
-                disabled={!btn.nodeId}
-                className="w-full text-[12.5px] rounded-xl px-3 py-2 transition-all text-center font-medium bg-[#182533] text-[#62a7d9] border border-[#1d3a52] hover:bg-[#1e3047]"
-              >
-                {btn.label}
-              </button>
-            ))}
+            {msg.buttons.map((btn, i) => {
+              const isClicked = msg.clickedBtn === btn.label
+              return (
+                <button key={i}
+                  onClick={() => !msg.clickedBtn && onInlineClick(btn.nodeId, btn.label, msg.id)}
+                  disabled={!btn.nodeId || !!msg.clickedBtn}
+                  className={[
+                    'w-full text-[12.5px] rounded-xl px-3 py-2 transition-all text-center font-medium border',
+                    isClicked
+                      ? 'bg-[#1e3a5f] text-[#4a9de0] border-[#2d5a8e] opacity-80'
+                      : msg.clickedBtn
+                      ? 'bg-[#182533] text-[#3d6a8a] border-[#1d3a52] opacity-40 cursor-not-allowed'
+                      : 'bg-[#182533] text-[#62a7d9] border-[#1d3a52] hover:bg-[#1e3047]',
+                  ].join(' ')}
+                >
+                  {isClicked ? `✓ ${btn.label}` : btn.label}
+                </button>
+              )
+            })}
           </div>
         )}
       </div>
@@ -151,10 +161,13 @@ export default function PreviewPanel({ nodes, edges, onClose }: Props) {
     const cfg  = (n.data.config as Record<string, unknown>) || {}
     const type = (n.type as string) || (n.data.nodeType as string) || ''
     if (type === 'handler' || type === 'business_handler') {
-      const trigger  = (cfg.trigger as string) || (cfg.event as string) || 'any'
+      const triggers: string[] = Array.isArray(cfg.triggers)
+        ? (cfg.triggers as string[])
+        : [(cfg.trigger as string) || (cfg.event as string) || 'any']
       const commands = (cfg.commands as string[]) || []
-      if (trigger === 'command' && commands.length) return commands[0] || '/start'
-      return trigger
+      if (triggers.includes('command') && commands.length) return commands[0] || '/start'
+      if (triggers.length === 1) return triggers[0]
+      return triggers.slice(0, 2).join(', ') + (triggers.length > 2 ? '…' : '')
     }
     return (cfg.command as string) || '/start'
   }
@@ -261,7 +274,7 @@ export default function PreviewPanel({ nodes, edges, onClose }: Props) {
           {started && (
             <>
               {sim.messages.map(msg => (
-                <Bubble key={msg.id} msg={msg} onInlineClick={sim.onInlineButtonClick} />
+                <Bubble key={msg.id} msg={msg} onInlineClick={(nodeId, label, msgId) => sim.onInlineButtonClick(nodeId, label, msgId)} />
               ))}
               {sim.typing && <TypingDots />}
               <div ref={bottomRef} className="h-2" />

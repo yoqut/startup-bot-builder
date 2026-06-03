@@ -32,35 +32,33 @@ class BusinessHandlerNode(BaseNode):
         return ExecutionResult(next_node_id=None, variables=variables)
 
     def matches(self, update_type: str, payload: dict) -> bool:
-        trigger = self.config.get("trigger") or self.config.get("event") or "any"
+        # Support both old single trigger and new multi-select triggers array
+        raw = self.config.get("triggers")
+        if isinstance(raw, list) and raw:
+            triggers = raw
+        else:
+            triggers = [self.config.get("trigger") or self.config.get("event") or "any"]
 
         # ── Connection events ─────────────────────────────────────────────────
         if update_type in ("business_connected", "business_disconnected"):
-            event = (
-                "connected" if update_type == "business_connected" else "disconnected"
-            )
-            return trigger == event
+            event = "connected" if update_type == "business_connected" else "disconnected"
+            return event in triggers
 
         # ── Message events ────────────────────────────────────────────────────
         if update_type != "business_message":
             return False
 
         # connection-only triggers should not fire on messages
-        if trigger in ("connected", "disconnected"):
+        if all(t in ("connected", "disconnected") for t in triggers):
             return False
 
         # ── sender_type filter ────────────────────────────────────────────────
-        # Default: "customer" — only respond to the other person's messages.
-        # Nodes created before this feature have no sender_type → treated as "any"
-        # for backward compatibility.
         sender_type = self.config.get("sender_type", "any")
         is_owner = payload.get("is_owner_message", False)
-
         if sender_type == "customer" and is_owner:
             return False
         if sender_type == "owner" and not is_owner:
             return False
-        # sender_type == "any" → pass through
 
         # ── Optional connection_filter ────────────────────────────────────────
         connection_filter = self.config.get("connection_filter", "").strip()
@@ -70,32 +68,43 @@ class BusinessHandlerNode(BaseNode):
 
         msg_type = payload.get("msg_type", "any")
 
-        if trigger == "any":
-            return True
+        # Check each trigger — return True if any matches
+        for trigger in triggers:
+            if trigger in ("connected", "disconnected"):
+                continue
 
-        if trigger == "command":
-            if msg_type != "command":
-                return False
-            commands = self.config.get("commands", [])
-            if not commands:
+            if trigger == "any":
                 return True
-            text = payload.get("text", "") or ""
-            cmd = text.strip().split()[0].lower() if text else ""
-            return cmd in [c.strip().lower() for c in commands if c]
 
-        if trigger == "text":
-            if msg_type != "text":
-                return False
-            conditions = self.config.get("conditions", [])
-            if not conditions:
+            if trigger == "command":
+                if msg_type != "command":
+                    continue
+                commands = self.config.get("commands", [])
+                if not commands:
+                    return True
+                text = payload.get("text", "") or ""
+                cmd = text.strip().split()[0].lower() if text else ""
+                if cmd in [c.strip().lower() for c in commands if c]:
+                    return True
+                continue
+
+            if trigger == "text":
+                if msg_type != "text":
+                    continue
+                conditions = self.config.get("conditions", [])
+                if not conditions:
+                    return True
+                text = payload.get("text", "") or ""
+                mode = self.config.get("condition_mode", "any")
+                results = [_check_condition(c, text) for c in conditions]
+                if any(results) if mode == "any" else all(results):
+                    return True
+                continue
+
+            if msg_type == trigger:
                 return True
-            text = payload.get("text", "") or ""
-            mode = self.config.get("condition_mode", "any")
-            results = [_check_condition(c, text) for c in conditions]
-            return any(results) if mode == "any" else all(results)
 
-        # photo / video / audio / voice / document / location / contact
-        return msg_type == trigger
+        return False
 
 
 def _check_condition(cond: dict, text: str) -> bool:

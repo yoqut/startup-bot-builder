@@ -2,9 +2,27 @@
 > botbuilder-frontend@0.1.0 dev
 > vite
 
-[2m12:42:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
 
-  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m890[22m[2m[0m ms[22m
+  VITE v6.4.2  ready in 347 ms
 
-  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
-[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
+2:34:43 PM [vite] .env.local changed, restarting server...
+2:34:43 PM [vite] server restarted.
+2:34:43 PM [vite] .env.local changed, restarting server...
+2:34:43 PM [vite] server restarted.
+2:36:15 PM [vite] vite.config.ts changed, restarting server...
+2:36:15 PM [vite] server restarted.
+4:02:41 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/index.css
+4:15:52 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/index.css
+4:15:57 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/index.css
+4:21:03 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/HandlerPanel.tsx, /src/index.css
+4:21:09 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/BusinessHandlerPanel.tsx, /src/index.css
+4:27:58 PM [vite] (client) hmr update /src/pages/FlowBuilder/panels/MessagePanel.tsx, /src/index.css
+4:30:30 PM [vite] (client) hmr update /src/components/layout/Topbar.tsx, /src/index.css
+4:31:21 PM [vite] (client) hmr update /src/components/layout/AppLayout.tsx, /src/index.css
+4:33:46 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
+4:34:54 PM [vite] (client) hmr update /src/index.css, /src/pages/FlowBuilder/PreviewPanel.tsx
+4:35:09 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
+4:35:20 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
+4:35:25 PM [vite] (client) hmr update /src/pages/FlowBuilder/PreviewPanel.tsx, /src/index.css
