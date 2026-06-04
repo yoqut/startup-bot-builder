@@ -18,6 +18,8 @@ from app.api.v1.payments.controller import PaymentsController
 from app.api.v1.templates.controller import TemplatesController
 from app.webhook.controller import WebhookController
 from app.cache.redis import close_redis, init_redis
+from app.db.base import Base
+from app.db.session import engine
 from app.settings import settings
 from app.utils.tg_log_handler import setup_telegram_log_handler
 
@@ -54,7 +56,7 @@ logging.config.dictConfig(
     }
 )
 
-setup_telegram_log_handler()
+setup_telegram_log_handler(token=settings.MANAGER_BOT_TOKEN or None)
 
 logger = logging.getLogger(__name__)
 
@@ -68,6 +70,12 @@ openapi_config = OpenAPIConfig(title="TelegramBotBuilder API", version="1.0.0")
 
 
 async def on_startup() -> None:
+    # SQLite uchun jadvallarni avtomatik yaratish (alembic migratsiyalari PostgreSQL-specific)
+    if settings.is_sqlite:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("SQLite: barcha jadvallar yaratildi / tekshirildi")
+
     await init_redis()
 
     if not settings.MANAGER_BOT_TOKEN:
@@ -77,15 +85,6 @@ async def on_startup() -> None:
         async with httpx.AsyncClient(timeout=10) as client:
             r = await client.post(
                 f"https://api.telegram.org/bot{settings.MANAGER_BOT_TOKEN}/setWebhook",
-                json={
-                    "url": webhook_url,
-                    "allowed_updates": [
-                        "message",
-                        "managed_bot",
-                        "callback_query",
-                        "pre_checkout_query",
-                    ],
-                },
             )
             data = r.json()
             if data.get("ok"):

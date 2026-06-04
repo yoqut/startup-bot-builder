@@ -159,11 +159,58 @@ input:focus, textarea:focus, select:focus, button:focus { outline: none; }
     animation: edgeFlow 0.5s linear infinite;
   }
 
+  /* ── Node-to-connector visual bridge ─────────────────────── */
+
+  /* Isolated stacking context — handles z-index local to each node */
+  .node-shell { isolation: isolate; }
+
+  /* Bottom bloom: gradient fade that visually melts node into OutHandle(s) */
+  .node-shell:not(.node-shell-no-out)::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 22px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--node-accent, #2481cc) 20%, transparent) 100%
+    );
+    border-radius: 0 0 13px 13px;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  /* Top bloom: gradient fade that visually melts InHandle into node */
+  .node-shell:not(.node-shell-no-in)::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 22px;
+    background: linear-gradient(
+      to top,
+      transparent 0%,
+      color-mix(in srgb, var(--node-accent, #2481cc) 13%, transparent) 100%
+    );
+    border-radius: 13px 13px 0 0;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  /* Show blooms on hover and when selected */
+  .node-shell:hover::before,
+  .node-shell:hover::after,
+  .node-shell-selected::before,
+  .node-shell-selected::after { opacity: 1; }
+
   /* ── Flow handles — easier connection UX ──────────────────── */
 
   /* Base transition */
   .flow-handle {
-    transition: transform 0.13s ease, background 0.13s ease, box-shadow 0.13s ease !important;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease !important;
   }
 
   /* ── OutHandle: + icon via pseudo-elements ───────────────── */
@@ -174,7 +221,7 @@ input:focus, textarea:focus, select:focus, button:focus { outline: none; }
     top: 50%; left: 50%;
     border-radius: 1px;
     pointer-events: none;
-    transition: background 0.13s ease;
+    transition: background 0.15s ease;
   }
   /* vertical bar */
   .flow-handle-out::before { width: 1.5px; height: 6px; transform: translate(-50%, -50%); }
@@ -186,11 +233,30 @@ input:focus, textarea:focus, select:focus, button:focus { outline: none; }
   .flow-out-green::before, .flow-out-green::after { background: #22c55e; }
   .flow-out-red::before,   .flow-out-red::after   { background: #e53935; }
 
-  /* Hover — subtle scale + brighter glow, no full fill */
+  /* Hover — scale + directional glow toward node body */
   .flow-handle:hover { transform: scale(1.3) !important; }
-  .flow-out-blue:hover  { background: rgba(36,129,204,0.28) !important; box-shadow: 0 0 12px rgba(36,129,204,0.5) !important; }
-  .flow-out-green:hover { background: rgba(34,197,94,0.28) !important;  box-shadow: 0 0 12px rgba(34,197,94,0.5) !important; }
-  .flow-out-red:hover   { background: rgba(229,57,53,0.28) !important;  box-shadow: 0 0 12px rgba(229,57,53,0.5) !important; }
+
+  /* OutHandle: glow extends upward into node (directional shadow -y) */
+  .flow-out-blue:hover  {
+    background: rgba(36,129,204,0.28) !important;
+    box-shadow: 0 0 14px rgba(36,129,204,0.55), 0 -8px 16px rgba(36,129,204,0.2) !important;
+  }
+  .flow-out-green:hover {
+    background: rgba(34,197,94,0.28) !important;
+    box-shadow: 0 0 14px rgba(34,197,94,0.55),  0 -8px 16px rgba(34,197,94,0.2) !important;
+  }
+  .flow-out-red:hover {
+    background: rgba(229,57,53,0.28) !important;
+    box-shadow: 0 0 14px rgba(229,57,53,0.55),  0 -8px 16px rgba(229,57,53,0.2) !important;
+  }
+
+  /* InHandle hover: glow extends downward into node (directional shadow +y) */
+  .flow-handle-in:hover {
+    background: rgba(36,129,204,0.2) !important;
+    border-color: #5ba3d9 !important;
+    box-shadow: 0 0 12px rgba(36,129,204,0.5), 0 8px 16px rgba(36,129,204,0.22) !important;
+    transform: scale(1.3) !important;
+  }
 
   /* ── InHandle: shows target indicator when drag-connecting ─ */
 

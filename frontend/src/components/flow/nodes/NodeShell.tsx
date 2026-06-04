@@ -25,9 +25,10 @@ export function InHandle() {
       style={{
         width: 20, height: 20,
         top: -10,
+        zIndex: 10,
         background: 'rgba(36,129,204,0.08)',
         border: '1.5px solid #3d6080',
-        boxShadow: '0 0 6px rgba(36,129,204,0.15)',
+        boxShadow: '0 0 6px rgba(36,129,204,0.15), 0 6px 12px rgba(36,129,204,0.08)',
         cursor: 'crosshair',
       }}
     />
@@ -46,9 +47,10 @@ export function OutHandle({ id, left }: { id?: string; left?: string }) {
       style={{
         width: 20, height: 20,
         bottom: -10,
+        zIndex: 10,
         background: `${color}14`,
         border: `1.5px solid ${color}`,
-        boxShadow: `0 0 8px ${color}30`,
+        boxShadow: `0 0 8px ${color}30, 0 -6px 12px ${color}10`,
         cursor: 'crosshair',
         ...(left ? { left } : {}),
       }}
@@ -93,71 +95,79 @@ export function NodeShell({
     <div
       onDoubleClick={onDoubleClick}
       className={[
-        'relative rounded-[14px] overflow-hidden transition-[box-shadow,transform] duration-150',
-        'border border-tg-input',
+        'relative rounded-[14px] transition-[box-shadow,transform] duration-150',
+        'border border-tg-input node-shell',
         wide ? 'min-w-[260px] max-w-[300px]' : 'min-w-[220px] max-w-[270px]',
-        selected ? 'bg-tg-elevated' : 'bg-tg-card hover:-translate-y-[1px]',
+        selected ? 'bg-tg-elevated node-shell-selected' : 'bg-tg-card hover:-translate-y-[1px]',
         execState === 'executing' ? 'animate-node-pulse' : '',
+        noIn  ? 'node-shell-no-in'  : '',
+        noOut ? 'node-shell-no-out' : '',
       ].join(' ')}
       style={{
         borderLeft: `3px solid ${execBorder ?? accentHex}`,
         boxShadow: execShadow ?? (selected ? selectedShadow : '0 2px 10px rgba(0,0,0,0.35)'),
-      }}
+        '--node-accent': accentHex,
+      } as React.CSSProperties}
     >
       {!noIn && <InHandle />}
 
-      {/* ── Header ── */}
-      <div
-        className="flex items-center gap-2.5 px-3 py-[9px] border-b border-tg-input transition-colors duration-150"
-        style={{
-          background: selected
-            ? `linear-gradient(135deg, ${accentHex}22 0%, #2e3f52 55%)`
-            : `linear-gradient(135deg, ${accentHex}12 0%, #2b3a4a 55%)`,
-        }}
-      >
-        {/* Icon 32×32 */}
-        <div className={`w-8 h-8 rounded-[9px] ${cls?.bg ?? 'bg-tg-card'} border ${cls?.border ?? 'border-tg-border'} flex items-center justify-center shrink-0`}>
-          <div className={cls?.icon ?? 'text-tg-label'}>
-            <Icon size={15} color="currentColor" />
-          </div>
-        </div>
-
-        {/* Title column — badge sits below, never crowds the title */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between gap-1">
-            <span className="text-[13px] font-semibold text-white tracking-[0.1px] truncate">
-              {m.label}
-            </span>
-            {/* Exec state — right of title */}
-            <div className="shrink-0 flex items-center gap-1">
-              {execState === 'executing' && (
-                <span className="flex items-center gap-1 text-[9px] text-tg-accent font-semibold">
-                  <span className="w-[5px] h-[5px] rounded-full bg-tg-accent animate-pulse" />
-                  Run
-                </span>
-              )}
-              {execState === 'success' && <span className="text-[10px] text-node-green font-bold">✓</span>}
-              {execState === 'error'   && <span className="text-[10px] text-node-red font-bold">✗</span>}
-              {collapsed && <span className="text-[9px] text-tg-muted">▸</span>}
+      {/* Inner content wrapper — own overflow-hidden so gradients clip to rounded corners
+          while handles (z-index:10) can overlap the node edges for seamless visual connection.
+          rounded-[13px] = 14px outer radius minus 1px border, so corners align perfectly. */}
+      <div className={['rounded-[13px] overflow-hidden', selected ? 'bg-tg-elevated' : 'bg-tg-card'].join(' ')}>
+        {/* ── Header ── */}
+        <div
+          className="flex items-center gap-2.5 px-3 py-[9px] border-b border-tg-input transition-colors duration-150"
+          style={{
+            background: selected
+              ? `linear-gradient(135deg, ${accentHex}22 0%, #2e3f52 55%)`
+              : `linear-gradient(135deg, ${accentHex}12 0%, #2b3a4a 55%)`,
+          }}
+        >
+          {/* Icon 32×32 */}
+          <div className={`w-8 h-8 rounded-[9px] ${cls?.bg ?? 'bg-tg-card'} border ${cls?.border ?? 'border-tg-border'} flex items-center justify-center shrink-0`}>
+            <div className={cls?.icon ?? 'text-tg-label'}>
+              <Icon size={15} color="currentColor" />
             </div>
           </div>
-          {/* Badge sub-row */}
-          {badge && <div className="mt-[3px]">{badge}</div>}
+
+          {/* Title column — badge sits below, never crowds the title */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between gap-1">
+              <span className="text-[13px] font-semibold text-white tracking-[0.1px] truncate">
+                {m.label}
+              </span>
+              {/* Exec state — right of title */}
+              <div className="shrink-0 flex items-center gap-1">
+                {execState === 'executing' && (
+                  <span className="flex items-center gap-1 text-[9px] text-tg-accent font-semibold">
+                    <span className="w-[5px] h-[5px] rounded-full bg-tg-accent animate-pulse" />
+                    Run
+                  </span>
+                )}
+                {execState === 'success' && <span className="text-[10px] text-node-green font-bold">✓</span>}
+                {execState === 'error'   && <span className="text-[10px] text-node-red font-bold">✗</span>}
+                {collapsed && <span className="text-[9px] text-tg-muted">▸</span>}
+              </div>
+            </div>
+            {/* Badge sub-row */}
+            {badge && <div className="mt-[3px]">{badge}</div>}
+          </div>
         </div>
+
+        {/* ── Body ── */}
+        {!collapsed && (
+          <div className="px-3 py-[10px] text-[11px] text-tg-label">{children}</div>
+        )}
+
+        {/* ── Inline error strip ── */}
+        {errorMessage && !collapsed && (
+          <div className="flex items-center gap-1.5 px-3 py-[6px] bg-node-red/10 border-t border-node-red/20">
+            <span className="text-[9px] text-node-red leading-none">⚠</span>
+            <span className="text-[10px] text-node-red leading-[1.3]">{errorMessage}</span>
+          </div>
+        )}
       </div>
-
-      {/* ── Body ── */}
-      {!collapsed && (
-        <div className="px-3 py-[10px] text-[11px] text-tg-label">{children}</div>
-      )}
-
-      {/* ── Inline error strip ── */}
-      {errorMessage && !collapsed && (
-        <div className="flex items-center gap-1.5 px-3 py-[6px] bg-node-red/10 border-t border-node-red/20">
-          <span className="text-[9px] text-node-red leading-none">⚠</span>
-          <span className="text-[10px] text-node-red leading-[1.3]">{errorMessage}</span>
-        </div>
-      )}
 
       {!noOut && outCount === 1 && <OutHandle />}
       {!noOut && outCount === 2 && (

@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "aiohttp>=3.13.5",
+    "aiosqlite>=0.21.0",
     "alembic==1.18.4",
     "amqp==5.3.1",
     "annotated-types==0.7.0",
@@ -59,7 +60,7 @@ dependencies = [
     "python-dotenv==1.2.2",
     "python-jose[cryptography]==3.5.0",
     "pyyaml==6.0.3",
-    "redis[asyncio]==6.4.0",
+    "redis==6.4.0",
     "requests==2.34.0",
     "rich==15.0.0",
     "rich-click==1.9.7",
